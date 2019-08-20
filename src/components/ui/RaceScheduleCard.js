@@ -25,10 +25,30 @@ const RaceScheduleCard = (props) => {
               {props.type}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-                {props.startTime}
+                {props.startTime.slice(0,10) + " " + props.startTime.slice(14,20) }
             </Typography>
           </CardContent>
         </Card>
+        {props.gameDetails === null ? null : 
+        props.gameDetails.id === props.id ? 
+        props.gameDetails.races.map((race, i)=> {
+
+            return( 
+              <Card className={classes.card}>
+              <CardContent>
+                <Typography variant="h5" className={classes.title} color="textSecondary" gutterBottom>
+                {race.name}
+                </Typography>
+                <Typography variant="body1" component="h2">
+                {race.startTime.slice(0,10) + " " + race.startTime.slice(14,20) }
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                  {race.number}
+                </Typography>
+              </CardContent>
+            </Card>
+
+            )}) : null}        
     </div>
 
   );

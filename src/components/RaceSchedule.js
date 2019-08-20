@@ -15,6 +15,7 @@ class RaceSchedule extends Component {
 
   renderRaceSchedule = () => {
     const data = this.props.data.gameSchedule;
+    console.log(this.props.data.gameRaces);
 
     // If there is no data, return.
     if(data === null){
@@ -23,6 +24,8 @@ class RaceSchedule extends Component {
       if(data.upcoming){
         return data.upcoming.map((upcomingGame, index) => (
           <RaceScheduleCard 
+          gameDetails={this.props.data.gameRaces}
+          id={upcomingGame.id}
           key={index}
           type={data.betType}
           onClick={() => this.handleCardClick(upcomingGame.id)}
