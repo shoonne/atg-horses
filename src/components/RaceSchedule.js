@@ -15,7 +15,6 @@ class RaceSchedule extends Component {
 
   renderRaceSchedule = () => {
     const data = this.props.data.gameSchedule;
-    console.log(this.props.data.gameRaces);
 
     // If there is no data, return.
     if(data === null){
@@ -34,12 +33,13 @@ class RaceSchedule extends Component {
         ))
       } else if (!data.upcoming && data.results) {
         return data.results.map((result, index) => (
-          <RaceScheduleCard 
+        <RaceScheduleCard 
           key={index}
           type={data.betType}
           onClick={() => this.handleCardClick(result.id)}
           startTime={result.startTime}
           />
+
         ))
       } else {
         return;
@@ -48,7 +48,7 @@ class RaceSchedule extends Component {
   }
   render() {
     return (
-      <div style={{float:'left', marginLeft:'20%'}}>
+      <div style={{float:'left', marginLeft:'24%' ,cursor: 'pointer' }}>
       {this.renderRaceSchedule()}
       </div>
     );
@@ -57,7 +57,7 @@ class RaceSchedule extends Component {
 
 
 const mapStateToProps = state => {
-    console.log(state);
+  //console.log(state)
     return {
       data: state 
     }
